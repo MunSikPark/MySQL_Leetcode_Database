@@ -1,0 +1,13 @@
+# Write your MySQL query statement below
+Select
+    country_name,
+    case
+    when avg(weather_state) <= 15 then 'Cold'
+    when avg(weather_state) >= 25 then 'Hot'
+    else 'Warm' end AS weather_type
+    
+from
+    Countries C, Weather W
+Where
+    C.country_id = w.country_id and Year(w.day) = '2019' and Month(w.day) = '11' 
+group by C.country_name
